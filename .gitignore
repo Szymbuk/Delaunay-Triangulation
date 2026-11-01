@@ -11,3 +11,4 @@ dist/
 *.PNG
 points/
 triangulations/
+.pytest_cache/

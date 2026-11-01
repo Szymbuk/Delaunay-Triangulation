@@ -8,7 +8,10 @@ from Projekt.utils.custom_types import Triangle
 from Projekt.utils.triangle_operations.legality import legalize_edge, turned_points
 from Projekt.utils.triangle_operations.orient import orient
 from Projekt.utils.triangle_search.search_triangulation import find_triangle_containing_point
-from Projekt.utils.triangle_search.directed_graph_dfs import dfs_trianglation_point
+from Projekt.utils.triangle_search.directed_graph_dfs import (
+    dfs_trianglation_point,
+    is_point_in_triangle,
+)
 from Projekt.utils.triangle_search.jump_and_walk import jump_and_walk_point_search
 from Projekt.utils.triangle_operations.create_triangle import make_ccw_triangle
 
@@ -209,11 +212,11 @@ class Triangulation:
             if not triangle_ids:
                 del self.__adjacency_graph[edge]
 
-        if self.__vis is not None:
-            if vis_initial_triangle is not None:
-                self.__vis.remove_figure(vis_initial_triangle)
-            if vis_initial_points is not None:
-                self.__vis.remove_figure(vis_initial_points)
+        # if self.__vis is not None:
+        #     if vis_initial_triangle is not None:
+        #         self.__vis.remove_figure(vis_initial_triangle)
+        if vis_initial_points is not None:
+            self.__vis.remove_figure(vis_initial_points)
 
     def get_triangulation(self):
         return [self.__triangles[triangle_id] for triangle_id in sorted(self.__triangulation)]
@@ -239,7 +242,10 @@ class Triangulation:
         except RuntimeError as error:
             raise ValueError(f"Punkt {point} nie należy do triangulacji.") from error
 
-        if triangle_id not in self.__triangulation:
+        if (
+            triangle_id not in self.__triangulation
+            or not is_point_in_triangle(point, self.__triangles[triangle_id], self.__points)
+        ):
             raise ValueError(f"Punkt {point} nie należy do triangulacji.")
 
         result = (triangle_id, self.__triangles[triangle_id])

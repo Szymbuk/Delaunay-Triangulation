@@ -50,5 +50,8 @@ def jump_and_walk_next_point(point: Point, triangle_id: TriangleIndex, points: P
             for candidate_id in candidates_id:
                 if candidate_id != triangle_id:
                     return candidate_id
+            # Krawędź nie ma sąsiedniego trójkąta, więc punkt leży poza
+            # otoczką wypukłą triangulacji.
+            raise RuntimeError("Punkt poza granicami triangulacji")
 
     return triangle_id

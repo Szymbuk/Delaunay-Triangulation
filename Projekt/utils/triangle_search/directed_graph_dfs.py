@@ -26,6 +26,8 @@ def dfs_trianglation_point(point: Point, root_id: TriangleIndex, triangles: List
 
     def search(triangle_id: TriangleIndex) -> TriangleIndex:
         if child_graph[triangle_id] == set():
+            if not is_point_in_triangle(point, triangles[triangle_id], points):
+                raise RuntimeError(f"Punkt {point} poza granicami triangulacji.")
             return triangle_id
         for child in child_graph[triangle_id]:
             if is_point_in_triangle(point, triangles[child], points):

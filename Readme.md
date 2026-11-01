@@ -1,86 +1,186 @@
 # Delaunay Triangulation
 
-![Status](https://img.shields.io/badge/status-active-success.svg)
-![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
-![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)
-![Testing](https://img.shields.io/badge/pytest-passing-success.svg)
+![Triangulation animation](Project/gifs/sample.gif)
 
-A Python-based computational geometry project implementing the Delaunay Triangulation algorithm. The project features interactive Jupyter notebooks for step-by-step visualization, custom point generators, and efficient point-location structures to ensure mesh validity.
+A Python implementation of Delaunay triangulation with two point-location
+strategies, geometric utilities, data generators, visualization, automated
+tests, and performance benchmarks. The project is structured as a complete
+algorithmic workflow: from generating or importing points, through building
+and querying a triangulation, to visualizing and measuring the results.
 
-## 📸 Preview
+## Features
 
-![Delaunay Visualization](bitalg/visualizer/plot.gif)
+- **Delaunay triangulation** – builds a triangulation from a NumPy array of
+  points with shape `(N, 2)`.
+- **Point location** – supports two search strategies:
+  - `JaW` – Jump and Walk,
+  - `Graph` – depth-first search through the triangle children graph.
+- **Geometric operations** – point orientation, edge legalization, edge flips,
+  and counter-clockwise triangle construction.
+- **Data generation** – includes uniform random point generation and circular
+  point generation.
+- **CSV input/output** – saves and loads points and triangulations.
+- **Visualization** – provides an interactive visualizer and Jupyter
+  notebooks for exploring the algorithm.
+- **Benchmarking** – measures both triangulation construction time and point
+  location time in an already constructed triangulation.
 
-*Visualization of the Delaunay Triangulation process.*
+## Requirements
 
-## 🚀 Features
+- Python 3.12 or newer,
+- `uv` or a standard Python virtual environment,
+- dependencies listed in [`pyproject.toml`](pyproject.toml).
 
-* **Core Algorithm:** Efficient implementation of Delaunay Triangulation ensuring the circumcircle property and edge legality (`legality.py`, `orient.py`).
-* **Triangle Search Strategies:** Advanced point-location algorithms including **Jump and Walk** (`jump_and_walk.py`) and **Directed Graph DFS** (`directed_graph_dfs.py`).
-* **Data Generators & I/O:** Supports generating diverse datasets (random distributions, circular points, interactive mouse input) as well as importing/exporting data via CSV (`csvIO.py`).
-* **Interactive Visualization:** Includes Jupyter notebooks (`main.ipynb`, `search_demo.ipynb`) for visual, step-by-step algorithmic demonstrations.
-* **Extensive Testing:** Comprehensive unit, integration, and visual test suites built with `pytest` covering edge turning, triangle legality, orientation, and search accuracy.
-* **Benchmarking:** Dedicated performance evaluation scripts (`traingulation_benchmark.py`, `triangle_search_test.py`) to measure execution time and algorithmic complexity.
+## Installation
 
-## 💻 Tech Stack
+Clone the repository and move into the project directory:
 
-* **Language:** Python 3.8+
-* **Interactive Environment:** Jupyter Notebook
-* **Visualization:** `bitalg` (Custom visualization package), `matplotlib`
-* **Testing:** `pytest`
+```bash
+git clone https://github.com/Szymbuk/Algorytmy-Geometryczne.git
+cd Algorytmy-Geometryczne
+```
 
-## 📂 Project Structure
+Install the dependencies with `uv`:
 
-* `Projekt/` – Core implementation of the Delaunay triangulation, point generators, triangle operations, search algorithms, and demonstration notebooks.
-* `bitalg/` – Geometric visualization toolset used to render points, polygons, circles, and animations.
-* `tests/` – Unit, integration, and visual test suites.
-* `benchmarks/` – Scripts for benchmarking triangulation and search performance.
+```bash
+uv sync
+```
 
-## 🛠 Getting Started
+If you are already working inside an activated virtual environment, you can
+install the dependencies with:
 
-### Prerequisites
+```bash
+pip install -r requirements.txt
+```
 
-Ensure you have Python 3.8 or newer installed on your machine.
+## Basic usage
 
-### Installation
+The main triangulation class is defined in
+[`Project/delaunay.py`](Project/delaunay.py).
 
-1. Clone the repository:
-   git clone https://github.com/Szymbuk/Delaunay-Triangulation.git
+```python
+import numpy as np
 
-2. Navigate to the project directory:
-   cd Delaunay-Triangulation
+from Project.delaunay import Triangulation
 
-3. Install the required dependencies:
-   pip install -r requirements.txt
+points = np.array([
+    [0.0, 0.0],
+    [4.0, 0.0],
+    [4.0, 4.0],
+    [0.0, 4.0],
+])
 
-## 📖 Usage
+triangulation = Triangulation(points, variant="JaW")
+triangulation.triangulate()
 
-### Interactive Notebooks
+triangle_id, triangle = triangulation.find_triangle(
+    np.array([1.0, 1.0])
+)
+```
 
-To see the triangulation algorithm in action and interact with the visualizations, launch Jupyter Notebook:
+The `Graph` variant must be selected when creating the triangulation so that
+the triangle children graph is built:
 
-   jupyter notebook Projekt/main.ipynb
+```python
+triangulation = Triangulation(points, variant="Graph")
+triangulation.triangulate()
+```
 
-To explore and compare the triangle search algorithms (Jump and Walk vs. Directed Graph DFS):
+## Jupyter notebooks
 
-   jupyter notebook Projekt/search_demo.ipynb
+The demonstration notebooks are located in the `Project/` directory:
 
-### Running Tests
+```bash
+uv run jupyter notebook Project/main.ipynb
+uv run jupyter notebook Project/search_demo.ipynb
+```
 
-To execute the unit and integration test suites using `pytest`, run the following command in the root directory:
+**Visual Studio Code is the recommended environment for opening and running
+the notebooks.** This project was tested with the notebooks executed through
+VS Code, including its Python and Jupyter integrations.
 
-   pytest
+`main.ipynb` demonstrates the triangulation process, while `search_demo.ipynb`
+compares the `JaW` and `Graph` point-location strategies.
 
-### Running Benchmarks
+## Tests
 
-To evaluate the performance of the implemented algorithms, run the benchmark scripts:
+Run the complete test suite with:
 
-   python -m benchmarks.traingulation_benchmark
+```bash
+uv run pytest
+```
 
-## 👏 Acknowledgments
+Run only the unit tests with:
 
-* **`bitalg` Visualizer:** The geometric visualization package located in the `bitalg/` directory was created and provided by the **BIT Scientific Circle (Koło Naukowe BIT)** at AGH University of Krakow for the Computational Geometry course (*Algorytmy Geometryczne*).
+```bash
+uv run pytest tests/unit
+```
 
-## 📝 License
+The tests cover point orientation, triangle location, edge operations, and
+CSV input/output.
 
-This project is open-source and available under the MIT License.
+## Benchmarks
+
+The benchmark scripts are located in [`benchmarks/`](benchmarks/):
+
+- [`triangulation.py`](benchmarks/triangulation.py) measures triangulation
+  construction time for the `JaW` and `Graph` variants;
+- [`triangle_find.py`](benchmarks/triangle_find.py) measures the time required
+  to find a triangle in an already constructed triangulation.
+
+Run the benchmarks with:
+
+```bash
+uv run python -m benchmarks.triangulation
+uv run python -m benchmarks.triangle_find
+```
+
+The point-location benchmark uses the centroids of active triangles as query
+points. This guarantees that every query belongs to the triangulation and does
+not lie on an edge.
+
+## Benchmark results
+
+The following charts were generated by the benchmark scripts and are stored
+in the `benchmarks/` directory.
+
+### Triangulation construction time
+
+![Triangulation benchmark results](benchmarks/benchmark_triangulation_results.png)
+
+### Triangle search time
+
+![Triangle search benchmark results](benchmarks/benchmark_search_triangle_results.png)
+
+## Project structure
+
+```text
+Project/
+├── delaunay.py                         # main triangulation implementation
+├── main.ipynb                          # visualization notebook
+├── search_demo.ipynb                   # point-location demonstration
+├── gifs/                               # animation files
+├── points/                             # sample point sets
+├── triangulations/                     # sample triangulations
+└── utils/
+    ├── csvIO.py                        # CSV input/output
+    ├── custom_types.py                 # shared type aliases
+    ├── generators/                     # point generators
+    ├── triangle_operations/            # geometric operations
+    └── triangle_search/                # point-location strategies
+
+bitalg/                                 # visualization toolkit
+benchmarks/                             # benchmark scripts and charts
+tests/                                  # unit and integration tests
+```
+
+## Project attribution
+
+The entire `bitalg/` directory, including its visualization toolkit, was
+created by the BIT Scientific Circle at AGH University of Krakow for the
+Computational Geometry course. This project was developed using that toolkit
+for visualization and demonstration of the Delaunay triangulation algorithm.
+
+## License
+
+This project is released under the MIT License.

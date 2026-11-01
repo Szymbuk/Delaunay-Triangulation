@@ -1,7 +1,3 @@
-"""Benchmark wyszukiwania trójkąta w gotowej triangulacji."""
-
-from __future__ import annotations
-
 from contextlib import redirect_stdout
 from dataclasses import dataclass
 from io import StringIO

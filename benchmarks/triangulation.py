@@ -1,5 +1,3 @@
-"""Performance benchmarks for the current Delaunay triangulation API."""
-
 from contextlib import redirect_stdout
 from dataclasses import dataclass
 from io import StringIO

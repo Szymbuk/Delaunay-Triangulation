@@ -1,5 +1,5 @@
-from Projekt.utils.triangle_search.jump_and_walk import jump_and_walk_next
-from Projekt.utils.custom_types import EdgeAdjacencyMap, PointIndex, PointsArray, Triangle, TriangleIndex
+from Project.utils.triangle_search.jump_and_walk import jump_and_walk_next
+from Project.utils.custom_types import EdgeAdjacencyMap, PointIndex, PointsArray, Triangle, TriangleIndex
 import numpy as np
 
 

@@ -1,5 +1,5 @@
 import numpy as np
-from Projekt.utils.custom_types import PointsArray
+from Project.utils.custom_types import PointsArray
 
 
 def generate_circle_points(O, R, n = 100) -> PointsArray:

@@ -3,17 +3,17 @@ from typing import Union, Literal
 
 from bitalg.visualizer.main import Visualizer
 
-from Projekt.utils.custom_types import Point, PointIndex, PointsArray, TriangleIndex, EdgeAdjacencyMap, variants, EPSILON
-from Projekt.utils.custom_types import Triangle
-from Projekt.utils.triangle_operations.legality import legalize_edge, turned_points
-from Projekt.utils.triangle_operations.orient import orient
-from Projekt.utils.triangle_search.search_triangulation import find_triangle_containing_point
-from Projekt.utils.triangle_search.directed_graph_dfs import (
+from Project.utils.custom_types import Point, PointIndex, PointsArray, TriangleIndex, EdgeAdjacencyMap, variants, EPSILON
+from Project.utils.custom_types import Triangle
+from Project.utils.triangle_operations.legality import legalize_edge, turned_points
+from Project.utils.triangle_operations.orient import orient
+from Project.utils.triangle_search.search_triangulation import find_triangle_containing_point
+from Project.utils.triangle_search.directed_graph_dfs import (
     dfs_trianglation_point,
     is_point_in_triangle,
 )
-from Projekt.utils.triangle_search.jump_and_walk import jump_and_walk_point_search
-from Projekt.utils.triangle_operations.create_triangle import make_ccw_triangle
+from Project.utils.triangle_search.jump_and_walk import jump_and_walk_point_search
+from Project.utils.triangle_operations.create_triangle import make_ccw_triangle
 
 
 class Triangulation:

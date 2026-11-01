@@ -1,6 +1,6 @@
 import numpy as np
 
-from Projekt.delaunay import Triangulation
+from Project.delaunay import Triangulation
 
 
 def test_find_triangle_returns_active_triangle():

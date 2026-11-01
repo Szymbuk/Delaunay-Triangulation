@@ -1,7 +1,7 @@
 
 
-from Projekt.utils.custom_types import PointIndex, PointsArray, Triangle, EPSILON
-from Projekt.utils.triangle_operations.orient import orient
+from Project.utils.custom_types import PointIndex, PointsArray, Triangle, EPSILON
+from Project.utils.triangle_operations.orient import orient
 
 
 def make_ccw_triangle(

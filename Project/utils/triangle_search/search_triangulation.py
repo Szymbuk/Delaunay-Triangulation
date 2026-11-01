@@ -2,9 +2,9 @@ from typing import Literal,List
 
 from bitalg.visualizer.main import Visualizer
 
-from Projekt.utils.custom_types import EdgeAdjacencyMap, TriangleIndex, PointIndex, PointsArray, variants,Triangle
-from Projekt.utils.triangle_search.jump_and_walk import jump_and_walk_triangle_search
-from Projekt.utils.triangle_search.directed_graph_dfs import dfs_trianglation
+from Project.utils.custom_types import EdgeAdjacencyMap, TriangleIndex, PointIndex, PointsArray, variants,Triangle
+from Project.utils.triangle_search.jump_and_walk import jump_and_walk_triangle_search
+from Project.utils.triangle_search.directed_graph_dfs import dfs_trianglation
 
 
 def find_triangle_containing_point(point: PointIndex, variant: variants,points_array: PointsArray,adjacency_graph: EdgeAdjacencyMap, triangles: List[Triangle], children_graph: list[set[TriangleIndex]], vis: Visualizer| None = None) -> TriangleIndex:

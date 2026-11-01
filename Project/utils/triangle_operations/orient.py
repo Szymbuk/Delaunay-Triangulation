@@ -1,4 +1,4 @@
-from Projekt.utils.custom_types import Point
+from Project.utils.custom_types import Point
 
 
 def orient(points: tuple[Point,Point,Point]) -> float:

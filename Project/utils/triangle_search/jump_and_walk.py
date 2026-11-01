@@ -1,7 +1,7 @@
 from typing import List
-from Projekt.utils.triangle_operations.orient import orient
+from Project.utils.triangle_operations.orient import orient
 from bitalg.visualizer.main import Visualizer
-from Projekt.utils.custom_types import Point, PointIndex, PointsArray, TriangleIndex,EdgeAdjacencyMap, Triangle, EPSILON
+from Project.utils.custom_types import Point, PointIndex, PointsArray, TriangleIndex,EdgeAdjacencyMap, Triangle, EPSILON
 
 def jump_and_walk_triangle_search(point_id: PointIndex, points_array: PointsArray, adjacency_graph: EdgeAdjacencyMap, triangles: List[Triangle], vis: Visualizer| None = None) -> TriangleIndex:
     return jump_and_walk_point_search(points_array[point_id], points_array, adjacency_graph, triangles, vis)[0]

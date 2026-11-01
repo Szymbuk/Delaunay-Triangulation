@@ -1,6 +1,6 @@
 import numpy as np
-from Projekt.utils.custom_types import PointIndex, TriangleIndex, EPSILON
-from Projekt.utils.triangle_operations.legality import turned_points
+from Project.utils.custom_types import PointIndex, TriangleIndex, EPSILON
+from Project.utils.triangle_operations.legality import turned_points
 
 
 

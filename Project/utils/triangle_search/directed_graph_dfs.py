@@ -1,9 +1,9 @@
 
 from typing import List
 import numpy as np
-from Projekt.utils.custom_types import PointsArray, TriangleIndex, Triangle, Point, PointIndex
+from Project.utils.custom_types import PointsArray, TriangleIndex, Triangle, Point, PointIndex
 from bitalg.visualizer.main import Visualizer
-from Projekt.utils.triangle_operations.orient import orient
+from Project.utils.triangle_operations.orient import orient
 
 def is_point_in_triangle(point: Point, triangle: Triangle, points: PointsArray) -> bool:
     p1_ind, p2_ind, p3_ind = triangle

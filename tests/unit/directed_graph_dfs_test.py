@@ -1,7 +1,7 @@
 import numpy as np
 
-from Projekt.utils.custom_types import PointIndex, PointsArray, Triangle, TriangleIndex
-from Projekt.utils.triangle_search.directed_graph_dfs import dfs_trianglation
+from Project.utils.custom_types import PointIndex, PointsArray, Triangle, TriangleIndex
+from Project.utils.triangle_search.directed_graph_dfs import dfs_trianglation
 
 
 def test_dfs_triangulation_finds_triangle_containing_point():

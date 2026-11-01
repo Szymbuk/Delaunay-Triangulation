@@ -1,7 +1,7 @@
 import numpy as np
 
-from Projekt.utils.custom_types import PointIndex, Triangle, TriangleIndex
-from Projekt.utils.triangle_search.search_triangulation import (
+from Project.utils.custom_types import PointIndex, Triangle, TriangleIndex
+from Project.utils.triangle_search.search_triangulation import (
     find_triangle_containing_point,
 )
 

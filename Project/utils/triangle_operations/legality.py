@@ -2,9 +2,9 @@ from typing import List
 
 import numpy as np
 import math
-from Projekt.utils.custom_types import PointIndex, TriangleIndex, Triangle, PointsArray, EdgeAdjacencyMap, Point, EPSILON
-from Projekt.utils.triangle_operations.create_triangle import make_ccw_triangle
-from Projekt.utils.triangle_operations.orient import orient
+from Project.utils.custom_types import PointIndex, TriangleIndex, Triangle, PointsArray, EdgeAdjacencyMap, Point, EPSILON
+from Project.utils.triangle_operations.create_triangle import make_ccw_triangle
+from Project.utils.triangle_operations.orient import orient
 from bitalg.visualizer.main import Visualizer
 
 def turned_points(p1: PointIndex,p2: PointIndex,adjacency_graph: EdgeAdjacencyMap,triangles: List[Triangle]) -> tuple[PointIndex,PointIndex]:

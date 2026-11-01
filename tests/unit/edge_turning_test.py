@@ -1,7 +1,7 @@
-from Projekt.utils.classes.Point import Point
-from Projekt.utils.classes.Section import Section
-from Projekt.utils.Triangle import Triangle
-from Projekt.utils.triangle_operations.legality import is_legal, turn, legalize_edge
+from Project.utils.classes.Point import Point
+from Project.utils.classes.Section import Section
+from Project.utils.Triangle import Triangle
+from Project.utils.triangle_operations.legality import is_legal, turn, legalize_edge
 from bitalg.visualizer.main import Visualizer
 
 

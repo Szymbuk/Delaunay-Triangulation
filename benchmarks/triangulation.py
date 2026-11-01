@@ -9,9 +9,9 @@ from typing import Iterable
 import matplotlib.pyplot as plt
 import numpy as np
 
-from Projekt.delaunay import Triangulation
-from Projekt.utils.custom_types import PointsArray, variants
-from Projekt.utils.generators.generate_points import generate_uniform_points
+from Project.delaunay import Triangulation
+from Project.utils.custom_types import PointsArray, variants
+from Project.utils.generators.generate_points import generate_uniform_points
 
 
 @dataclass(frozen=True)

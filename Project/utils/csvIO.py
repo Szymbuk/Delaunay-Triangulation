@@ -1,7 +1,7 @@
 import numpy as np
 import csv
 
-from Projekt.utils.custom_types import Triangle, PointIndex, PointsArray
+from Project.utils.custom_types import Triangle, PointIndex, PointsArray
 
 
 # --- OBSŁUGA PUNKTÓW ---

@@ -1,9 +1,9 @@
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), '../..')))
 
-from Projekt.utils.triangle_search.jump_and_walk import jump_and_walk_next
-from Projekt.utils.custom_types import PointsArray
-from Projekt.utils.Triangle import Triangle
+from Project.utils.triangle_search.jump_and_walk import jump_and_walk_next
+from Project.utils.custom_types import PointsArray
+from Project.utils.Triangle import Triangle
 import numpy as np
 
 

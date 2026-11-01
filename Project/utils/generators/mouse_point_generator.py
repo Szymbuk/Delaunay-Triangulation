@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from Projekt.utils.custom_types import Point
+from Project.utils.custom_types import Point
 from typing import List
 import numpy as np
 

@@ -1,6 +1,6 @@
 import numpy as np
 
-from Projekt.utils.csvIO import (
+from Project.utils.csvIO import (
     load_points_from_csv,
     load_triangulation_from_csv,
     save_points_to_csv,

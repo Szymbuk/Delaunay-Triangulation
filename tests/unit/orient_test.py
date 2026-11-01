@@ -1,6 +1,6 @@
 import numpy as np
-from Projekt.utils.custom_types import PointIndex, TriangleIndex, EPSILON
-from Projekt.utils.triangle_operations.orient import orient
+from Project.utils.custom_types import PointIndex, TriangleIndex, EPSILON
+from Project.utils.triangle_operations.orient import orient
     
     
 def test_orient_clockwise():

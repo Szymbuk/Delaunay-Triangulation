@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 
 from Project.delaunay import Triangulation
 
@@ -20,14 +21,8 @@ def test_find_triangle_rejects_point_outside_triangulation():
         triangulation = Triangulation(points, variant=variant)
         triangulation.triangulate()
 
-        try:
+        with pytest.raises(ValueError, match="nie należy"):
             triangulation.find_triangle(np.array([2.0, -1.0]))
-        except ValueError as error:
-            assert "nie należy" in str(error)
-        else:
-            raise AssertionError(
-                f"Punkt spoza triangulacji powinien zgłosić ValueError dla {variant}"
-            )
 
 
 def test_find_triangle_uses_jump_and_walk_trace():
